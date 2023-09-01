@@ -1,0 +1,6 @@
+{
+    "supportsES6": true,
+    "typescriptThreePlus": true,
+    "withInterfaces": true,
+    "modelPropertyNaming": "camelCase"
+}

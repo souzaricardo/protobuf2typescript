@@ -1,0 +1,17 @@
+syntax = "proto2";
+import "models.proto";
+
+message SavedPointEvent {
+  required Point point = 1;
+  required RequestedBy requestedBy = 2;
+}
+
+message SavedLineEvent {
+  required Line line = 1;
+  required RequestedBy requestedBy = 2;
+}
+
+message SavedPolylineEvent {
+  required Polyline polyline = 1;
+  required RequestedBy requestedBy = 2;
+}

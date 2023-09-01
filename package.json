@@ -1,0 +1,31 @@
+{
+  "name": "protobuf2typescript",
+  "version": "1.0.0",
+  "description": "A small project to show how to transform protobuf to typescript",
+  "main": "index.js",
+  "scripts": {
+    "generate:swaggerFromProto": "protobuf2swagger",
+    "generate:typescriptFromSwagger": "openapi-generator-cli generate -c ./openapi-generator.config.json --global-property models -i ./specs/topic-specifications.schema.json -g typescript-angular -o src/types/topicSpecifications",
+    "generate:models": "rm -rf src/types/topicSpecifications/* && npm run generate:swaggerFromProto && npm run generate:typescriptFromSwagger"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/souzaricardo/protobuf2typescript.git"
+  },
+  "keywords": [
+    "protobuf",
+    "typescript",
+    "openapi",
+    "codegen"
+  ],
+  "author": "Ricardo Souza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/souzaricardo/protobuf2typescript/issues"
+  },
+  "homepage": "https://github.com/souzaricardo/protobuf2typescript#readme",
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "2.7.0",
+    "protobuf2swagger": "0.5.0"
+  }
+}

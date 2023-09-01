@@ -1,0 +1,149 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "models",
+    "description": "",
+    "version": "1"
+  },
+  "paths": {},
+  "components": {
+    "schemas": {
+      "Point": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "y": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "x",
+          "y"
+        ]
+      },
+      "Line": {
+        "type": "object",
+        "properties": {
+          "start": {
+            "$ref": "#/components/schemas/Point"
+          },
+          "end": {
+            "$ref": "#/components/schemas/Point"
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "start",
+          "end"
+        ]
+      },
+      "Polyline": {
+        "type": "object",
+        "properties": {
+          "point": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Point"
+            }
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "RequestedByUserType": {
+        "type": "string",
+        "enum": [
+          "AGENT",
+          "ADMIN"
+        ],
+        "description": "0 - AGENT \n1 - ADMIN "
+      },
+      "RequestedBy": {
+        "type": "object",
+        "properties": {
+          "user_type": {
+            "$ref": "#/components/schemas/RequestedByUserType"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "required": [
+          "user_type"
+        ]
+      },
+      "SavedPointEvent": {
+        "type": "object",
+        "properties": {
+          "point": {
+            "$ref": "#/components/schemas/Point"
+          },
+          "requestedBy": {
+            "$ref": "#/components/schemas/RequestedBy"
+          }
+        },
+        "required": [
+          "point",
+          "requestedBy"
+        ]
+      },
+      "SavedLineEvent": {
+        "type": "object",
+        "properties": {
+          "line": {
+            "$ref": "#/components/schemas/Line"
+          },
+          "requestedBy": {
+            "$ref": "#/components/schemas/RequestedBy"
+          }
+        },
+        "required": [
+          "line",
+          "requestedBy"
+        ]
+      },
+      "SavedPolylineEvent": {
+        "type": "object",
+        "properties": {
+          "polyline": {
+            "$ref": "#/components/schemas/Polyline"
+          },
+          "requestedBy": {
+            "$ref": "#/components/schemas/RequestedBy"
+          }
+        },
+        "required": [
+          "polyline",
+          "requestedBy"
+        ]
+      }
+    }
+  }
+}
