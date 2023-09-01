@@ -9,4 +9,4 @@ Install the packages
 `npm i`
 
 Generate the models based on the proto files inside the the spec folder and configured on protobuf2swagger.config.js file
-`npm generate:models`
+`npm run generate:models`
