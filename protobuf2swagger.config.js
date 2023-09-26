@@ -12,6 +12,19 @@ module.exports = {
         // console.log('enum:', Enum);
         return { ...result, type: 'string', enum: Object.keys(Enum.values) };
       }
+      case 'message': {
+        const [Type] = args;
+        // looking for Map fields and converting them to { [key: string]: type; }
+        const map = Object.values(Type.fields || {}).filter(f => f.map && f.keyType === 'string');
+        const newResult = { ...result };
+        map.forEach(field => {
+          newResult.properties[field.name].type = 'object';
+          newResult.properties[field.name].additionalProperties = { type: 'string' };
+        });
+
+        // console.log('result', newResult);
+        return newResult;
+      }
     }
     return result;
   }
